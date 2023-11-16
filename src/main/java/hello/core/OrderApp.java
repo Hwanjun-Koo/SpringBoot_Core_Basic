@@ -10,8 +10,11 @@ import hello.core.order.OrderServiceImpl;
 //직접 실행
 public class OrderApp {
     public static void main(String[] args) { // psvm으로 빠른 생성 가능
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+
+        Appconfig appconfig = new Appconfig(); //Appconfig 생성
+        MemberService memberService = appconfig.memberService(); //Appconfig에서 생성한 memberService를 가져옴
+        OrderService orderService = appconfig.orderService(); //Appconfig에서 생성한 orderService를 가져옴
+
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP); //VIP인 회원 생성
