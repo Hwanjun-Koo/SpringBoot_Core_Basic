@@ -20,7 +20,7 @@ public class OrderApp {
         Member member = new Member(memberId, "memberA", Grade.VIP); //VIP인 회원 생성
         memberService.join(member);
 
-        Order order = orderService.createOrder(memberId, "itemA", 10000); // 주문 생성
+        Order order = orderService.createOrder(memberId, "itemA", 20000); // 주문 생성
 
         System.out.println("order = " + order);
         System.out.println("order.calculatePrice = " + order.calculatePrice());
