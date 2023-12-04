@@ -15,18 +15,24 @@ import org.springframework.context.annotation.Configuration;
 @Configuration //설정 정보
 public class Appconfig { //전체 애플리케이션의 구성
 
+    //@Bean memberService -> new MemoryMemberRepository()
+    //@Bean orderService -> new MemoryMemberRepository()
+
     @Bean //스프링 컨테이너에 등록
     public MemberService memberService() { //회원 서비스 객체 생성
+        System.out.println("call Appconfig.memberService"); //확인용
         return new MemberServiceImpl(memberRepository()); //MemoryMemberRepository를 생성자를 통해 넣어줌(생성자 주입)
     }
 
     @Bean
     public MemberRepository memberRepository() {//회원 저장소 객체 생성
+        System.out.println("call Appconfig.memberRepository"); //확인용
         return new MemoryMemberRepository(); //나중에 DB로 바꾸고 싶다면 여기만 바꾸면 됨
     }
 
     @Bean
     public OrderService orderService() { //주문 서비스 객체 생성
+        System.out.println("call Appconfig.orderService"); //확인용
         return new OrderServiceImpl(memberRepository(), discountPolicy()); //생성자 주입
     }
 

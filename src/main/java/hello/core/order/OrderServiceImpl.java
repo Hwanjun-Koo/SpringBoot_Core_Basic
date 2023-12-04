@@ -25,4 +25,9 @@ public class OrderServiceImpl implements OrderService{
         //Grade만 넘길 지 Member를 넘길지는 프로젝트 목저에 따라 바뀜
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    //테스트용
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
