@@ -1,28 +1,22 @@
 package hello.core.order;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 //주문 서비스 구현체
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy; //인터페이스만 의존하도록 변경
+    private final DiscountPolicy discountPolicy; // 롬복으로 생성자 주입 간소화
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        System.out.println("memberRepository = " + memberRepository);
-        System.out.println("discountPolicy = " + discountPolicy);
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
