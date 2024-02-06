@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 //주문 서비스 구현체
 @Component
-
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
